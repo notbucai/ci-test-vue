@@ -1,7 +1,8 @@
 <template>
   <div class="box">
+    {{count}}
     <div class="item">
-      <router-link to="/a">A</router-link>
+      <router-link to="/">A</router-link>
     </div>
     <div class="item">
       <router-link to="/b">B</router-link>
@@ -12,9 +13,20 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data(){
+    return {
+      count:0
+    }
+  },
+  mounted(){
+    setInterval(() => {
+      this.count++;
+    }, 30);
+  }
+};
 </script>
-<style scope>
+<style scoped>
 .box{
   position: absolute;
   top: 0;

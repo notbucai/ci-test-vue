@@ -1,39 +1,28 @@
 <template>
-  <div id="app">
-    
-    <router-view></router-view>
-
+  <div class="App">
+    <canvas ref="canvas"></canvas>
   </div>
 </template>
-
 <script>
-
+import QRCode from 'qrcode'
 export default {
-  name: "app",
-  components: {}
-};
-</script>
+  data () {
+    return {
 
-<style lang="scss">
-#app {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #03a9f4;
-  .item{
-    height: 60px;
-    border-radius: 4px;
-    box-shadow: 0 0 6px #f6f6f6;
-    background-color: #fff;
-    margin: 10px;
-    box-sizing: border-box;
-    line-height: 60px;
-    padding:0 20px;
-    >a{
-      display: block;
-    }
+    };
+  },
+  mounted () {
+    // console.log('QRCode',QRCode);
+    QRCode.toCanvas(this.$refs.canvas, 'sample text', function (error) {
+      if (error) console.error(error)
+      console.log('success!');
+    })
+  },
+  methods: {
   }
+}
+</script>
+<style lang="scss" scoped>
+.App {
 }
 </style>
